@@ -21,3 +21,9 @@ block content
      img(data-src="holder.js/200x200/auto/vine/text:CHE" class="img-responsive" alt="Generic placeholder thumbnail")
      h4 Label
      span.text-muted Something else
+
+block subcontent
+  div(ng-view)
+    div(ng-repeat='item in items')
+      a {{item.chid}}
+  
