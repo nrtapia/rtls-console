@@ -1,6 +1,10 @@
-function AllChe($scope, $http) {
-  $http.get('/che/all').
-    success(function(data, status, headers, config) {
-      $scope.items = data.items;
-    });
-}
+app.controller("listCheController", function($scope, $http) {
+     $http.get("/che/all")
+       .success(function(response) {
+          $scope.subtitle = "CHE LIST";
+	  $scope.items = response;
+        })
+        .error(function(data, status, headers, config) { 	
+	   console.info("ERROR", data, status); 
+	});	     
+});

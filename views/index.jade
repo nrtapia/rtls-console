@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  .row.placeholders
+  .row.placeholders 
    .col-xs-6.col-sm-3.placeholder
      img(data-src="holder.js/200x200/auto/sky/text:CHE" class="img-responsive" alt="Generic placeholder thumbnail")
      h4 Label
@@ -23,7 +23,31 @@ block content
      span.text-muted Something else
 
 block subcontent
-  div(ng-view)
-    div(ng-repeat='item in items')
-      a {{item.chid}}
+
+  h2.sub-header CHE List
+  
+  div(data-ng-app="console" data-ng-controller="listCheController")
+    .table-responsive
+            table.table.table-striped
+              thead
+                tr
+                  th CHE
+                  th
+                    label(for="type") TYPE
+                    input.input-sm.col-lg-2(id="type" type="text" data-ng-model="equipType")
+                  th 
+                    label(for="status") STATUS
+                    input.input-sm.col-lg-2(id="type" type="text" data-ng-model="status")
+                  th DSTA
+                  th 
+                    label(for="teminal") TERMINAL
+                    input.input-sm.col-lg-2(id="type" type="text" data-ng-model="teminal")
+              tbody		
+                tr(ng-repeat="item in items | filter:teminal | filter:equipType | filter:status | orderBy:'order'")	      
+                  td {{item.chid}}
+                  td {{item.equipType}}
+                  td {{item.status}}
+                  td {{item.dsta}}                  
+                  td {{item.teminal}}
+       
   
